@@ -1,20 +1,25 @@
-FROM python:3.9-slim AS builder
-
-WORKDIR /app
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-
 FROM python:3.9-slim
 
 WORKDIR /app
-COPY --from=builder /app /app
-COPY app.py .
 
-# Environment variables
+# Copy requirements file
+COPY requirements.txt .
+
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the rest of your application
+COPY . .
+
+# Set the environment variable for Flask
 ENV FLASK_APP=app.py
-ENV DATABASE_URL=sqlite:///create_db.db
 
-# Expose the port
+# Expose the port the app runs on
 EXPOSE 5000
 
-CMD ["flask", "run", "--host=0.0.0.0"]
+# Copy the entrypoint script
+COPY entrypoint.sh .
+
+# Set the entrypoint
+ENTRYPOINT ["./entrypoint.sh"]
+

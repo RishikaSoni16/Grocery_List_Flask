@@ -1,12 +1,11 @@
-version: '3.8'
-
 services:
   web:
     build: .
     ports:
       - "5000:5000"
     environment:
-      DATABASE_URL: sqlite:///tasks.db
+      DATABASE_URL: sqlite:///db_web.db
     volumes:
-      - ./tasks.db:/app/tasks.db
-
+      - ./db_web.db:/app/db_web.db
+      - .:/apwq!
+        

@@ -69,7 +69,7 @@ def api_get_items():
     cur.execute("SELECT * FROM items")
     items = cur.fetchall()
     con.close()
-    return jsonify([dict(items) for item in items]), 200
+    return jsonify([dict(item) for item in items]), 200
 
 @app.route("/api/items", methods=['POST'])
 def api_add_item():
