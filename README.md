@@ -1,7 +1,7 @@
 <h4>1. **Clone the repository**:</h4>
    ```bash
-   git clone https://github.com/yourusername/flask-task-manager.git
-   cd flask-task-manager
+   git clone https://github.com/RishikaSoni16/Grocery_List_flask.git
+   cd Grocery_List_flask
 <h4>2. Ensure you have Docker and Docker Compose installed:</h4>
    docker --version
    docker-compose --version  
